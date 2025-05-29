@@ -1,4 +1,3 @@
-"use client";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -14,6 +13,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import React from "react";
 
 import SignUpForm from "./components/sign-up-form";
+import SignInForm from "./components/sign-in-form";
 
 const login = () => {
   return (
@@ -26,16 +26,7 @@ const login = () => {
 
         {/* screen of login */}
         <TabsContent value="login">
-          <Card>
-            <CardHeader>
-              <CardTitle>Entrar</CardTitle>
-              <CardDescription>Faça login para continuar</CardDescription>
-            </CardHeader>
-            <CardContent className="space-y-4"></CardContent>
-            <CardFooter>
-              <Button>Fazer login</Button>
-            </CardFooter>
-          </Card>
+          <SignInForm />
         </TabsContent>
 
         {/* screen of register */}

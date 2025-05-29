@@ -7,7 +7,7 @@
 
 ## ROTEIRO AULA 02: AUTENTICAÇÃO E CONFIGURAÇÕES DO ESTABELECIMENTO
 
-    [] Tela de login e criação de conta
+    [X] Tela de login e criação de conta
     [] Login com e-mail e senha
     [] Login com o Google
     [] Fundamentos de next (rotas, layout)
