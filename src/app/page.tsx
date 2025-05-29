@@ -4,7 +4,7 @@ import { redirect } from "next/navigation";
 import { Button } from "@/components/ui/button";
 
 const login = () => {
-  redirect("/login");
+  redirect("/authentication");
 };
 
 const page = () => {

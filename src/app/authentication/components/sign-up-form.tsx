@@ -24,6 +24,8 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { authClient } from "@/lib/auth-client";
 import { Loader2 } from "lucide-react";
 import { useRouter } from "next/navigation";
+import { toast } from "sonner";
+import { useEffect } from "react";
 
 const registerSchema = z.object({
   name: z
@@ -41,6 +43,10 @@ const registerSchema = z.object({
 const SignUpForm = () => {
   const router = useRouter();
 
+  useEffect(() => {
+    toast.success("Seja bem vindo a tela de cadastro!");
+  }, []);
+
   const form = useForm<z.infer<typeof registerSchema>>({
     resolver: zodResolver(registerSchema),
     defaultValues: {
@@ -51,17 +57,28 @@ const SignUpForm = () => {
   });
 
   async function onSubmit(values: z.infer<typeof registerSchema>) {
-    await authClient.signUp.email(
-      {
-        email: values.email,
-        password: values.password,
-        name: values.name,
-      },
-      {
-        onSuccess: () => {
-          router.push("/dashboard");
-        },
-      }
+    // await authClient.signUp.email(
+    //   {
+    //     email: values.email,
+    //     password: values.password,
+    //     name: values.name,
+    //   },
+    //   {
+    //     onSuccess: () => {
+    //       toast.success("Conta criada com sucesso");
+    //       router.push("/dashboard");
+    //     },
+    //     onError: (ctx) => {
+    //       console.log(ctx);
+    //       if (ctx.error.code === "USER_ALREADY_EXISTS") {
+    //         toast.error("Este e-mail já está cadastrado");
+    //       }
+    //     },
+    //   }
+    // );
+
+    toast.warning(
+      "Você não tem permissão para criar uma conta, contate o administrador"
     );
   }
 
