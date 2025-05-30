@@ -1,21 +1,21 @@
-import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-
+import { auth } from "@/lib/auth";
 import React from "react";
 
 import SignUpForm from "./components/sign-up-form";
 import SignInForm from "./components/sign-in-form";
+import { headers } from "next/headers";
+import { redirect } from "next/navigation";
 
-const login = () => {
+const login = async () => {
+  const session = await auth.api.getSession({
+    headers: await headers(),
+  });
+
+  if (session) {
+    redirect("/dashboard");
+  }
+
   return (
     <div className="flex justify-center items-center h-screen">
       <Tabs defaultValue="login" className="w-[400px]">
