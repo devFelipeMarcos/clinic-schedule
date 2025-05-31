@@ -21,9 +21,3 @@ export const createClinic = async (name: string) => {
     clinicId: clinic.id,
   });
 };
-
-export const getClinics = async () => {
-  const clinics = await db.query.clinicsTable.findMany();
-
-  return clinics;
-};
